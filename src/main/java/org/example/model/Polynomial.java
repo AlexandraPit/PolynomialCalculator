@@ -12,7 +12,6 @@ public class Polynomial {
     public void addTerm(double coeff, int exponent) {
         Monomial existingMonomial = terms.get(exponent);
         if (existingMonomial != null) {
-            // If a term with the same exponent already exists, accumulate the coefficients
             coeff += existingMonomial.getCoeff();
         }
         Monomial monomial = new Monomial(coeff, exponent);
@@ -27,8 +26,8 @@ public class Polynomial {
     }
 
     public Monomial getTermWithMaxExponent() {
-        Monomial[] maxTerm = {null}; // Using an array to hold the reference of maxTerm due to the capture in lambda
-        int[] maxExponent = {Integer.MIN_VALUE}; // Using an array to hold the max exponent due to capture in lambda
+        Monomial[] maxTerm = {null};
+        int[] maxExponent = {Integer.MIN_VALUE};
         terms.values().forEach(monomial -> {
             if (monomial.getExponent() > maxExponent[0]) {
                 maxTerm[0] = monomial;
@@ -38,7 +37,7 @@ public class Polynomial {
         return maxTerm[0];
     }
     public int getMaxDegree() {
-        final int[] maxDegree = {0}; // Using an array to hold the max degree due to capture in lambda
+        final int[] maxDegree = {0};
         terms.keySet().forEach(exponent -> {
             if (exponent > maxDegree[0]) {
                 maxDegree[0] = exponent;
@@ -96,7 +95,6 @@ public class Polynomial {
             double newCoeff = coeff * monomial.getCoeff();
             int newExp = exp + monomial.getExponent();
 
-            // Check if there's already a term with the same exponent
             if (result.getTerms().containsKey(newExp)) {
                 double existingCoeff = result.getCoeff(newExp);
                 result.addTerm(existingCoeff + newCoeff, newExp);

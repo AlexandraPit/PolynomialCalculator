@@ -34,8 +34,7 @@ public class OperationTest {
     @Test
     public void testSubtraction() {
         Operations operations = new Operations();
-
-        // Create instances of Polynomial representing the polynomials
+        
         Polynomial poly1 = new Polynomial();
         poly1.addTerm(1, 2);  // x^2
         poly1.addTerm(3, 1);  // 3x
@@ -44,16 +43,13 @@ public class OperationTest {
         poly2.addTerm(1, 3);  // x^3
         poly2.addTerm(2, 2);  // 2x^2
 
-        // Call the add method with the Polynomial instances
         Polynomial result = operations.subtract(poly1, poly2);
 
-        // Define the expected result polynomial
         Polynomial expected = new Polynomial();
-        expected.addTerm(-1, 3);  // x^3
-        expected.addTerm(-1, 2);  // 3x^2
+        expected.addTerm(-1, 3);  // -x^3
+        expected.addTerm(-1, 2);  // -x^2
         expected.addTerm(3, 1);  // 3x
 
-        // Assert that the result polynomial matches the expected polynomial
         assertEquals(expected, result);
     }
 
@@ -70,23 +66,19 @@ public class OperationTest {
         poly2.addTerm(1, 3);  // x^3
         poly2.addTerm(2, 2);  // 2x^2
 
-        // Call the add method with the Polynomial instances
         Polynomial result = operations.multiply(poly1, poly2);
 
-        // Define the expected result polynomial
         Polynomial expected = new Polynomial();
-        expected.addTerm(1, 5);  // x^3
-        expected.addTerm(5, 4);  // 3x^2
-        expected.addTerm(6, 3);  // 3x
+        expected.addTerm(1, 5);  // x^5
+        expected.addTerm(5, 4);  // 5x^4
+        expected.addTerm(6, 3);  // 6x^3
 
-        // Assert that the result polynomial matches the expected polynomial
         assertEquals(expected, result);
     }
     @Test
     public void testDivision() {
         Operations operations = new Operations();
 
-        // Create instances of Polynomial representing the polynomials
         Polynomial dividend = new Polynomial();
         dividend.addTerm(2, 3);  // 2x^3
         dividend.addTerm(4, 2);  // 4x^2
@@ -96,22 +88,18 @@ public class OperationTest {
         Polynomial divisor = new Polynomial();
         divisor.addTerm(1, 1);   // x
 
-        // Call the divide method with the Polynomial instances
         List<Polynomial> result = operations.divide(dividend, divisor);
 
-        // Define the expected result polynomials
+
         Polynomial expectedQuotient = new Polynomial();
         expectedQuotient.addTerm(2, 2);  // 2x^2
-        expectedQuotient.addTerm(4, 1);  // 2x
-        expectedQuotient.addTerm(6, 0);  // 4
+        expectedQuotient.addTerm(4, 1);  // 4x
+        expectedQuotient.addTerm(6, 0);  // 6
 
-        Polynomial expectedRemainder = new Polynomial(); // No terms for the remainder
+        Polynomial expectedRemainder = new Polynomial();
         expectedRemainder.addTerm(8,0);
 
-        // Assert that the quotient polynomial matches the expected quotient
         assertEquals(expectedQuotient, result.get(1));
-
-        // Assert that the remainder polynomial matches the expected remainder
         assertEquals(expectedRemainder, result.get(0));
     }
 
@@ -119,13 +107,11 @@ public class OperationTest {
     public void testDerivative() {
         Operations operations = new Operations();
 
-        // Create instances of Polynomial representing the polynomials
         Polynomial poly1 = new Polynomial();
         poly1.addTerm(1, 2);  // x^2
         poly1.addTerm(3, 1);  // 3x
 
 
-        // Call the add method with the Polynomial instances
         Polynomial result = operations.derivative(poly1);
 
         // Define the expected result polynomial
@@ -133,7 +119,6 @@ public class OperationTest {
         expected.addTerm(2, 1);  // 2x
         expected.addTerm(3, 0);  // 3
 
-        // Assert that the result polynomial matches the expected polynomial
         assertEquals(expected, result);
     }
 
@@ -141,21 +126,16 @@ public class OperationTest {
     public void testIntegration() {
         Operations operations = new Operations();
 
-        // Create instances of Polynomial representing the polynomials
         Polynomial poly1 = new Polynomial();
         poly1.addTerm(3, 2);  // 3x^2
         poly1.addTerm(2, 1);  // 2x
 
-
-        // Call the add method with the Polynomial instances
         Polynomial result = operations.integrate(poly1);
 
-        // Define the expected result polynomial
         Polynomial expected = new Polynomial();
         expected.addTerm(1, 3);  // x^3
         expected.addTerm(1, 2);  // x^2
 
-        // Assert that the result polynomial matches the expected polynomial
         assertEquals(expected, result);
     }
 }
